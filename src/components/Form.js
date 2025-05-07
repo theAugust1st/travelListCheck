@@ -1,13 +1,40 @@
-import React from 'react'
+
+import React, { useState } from "react";
 
 function Form() {
+  const [description,setDescription] = useState('')
+  const [quantity,setQuantity] = useState(1)
+  function handleSubmit(e) {
+    e.preventDefault();
+
+  if(!description)return;
+    const newProduct = {
+      description,quantity,packed:false,id: Date.now()
+    }
+    console.log(newProduct)
+
+    setDescription('');
+    setQuantity(1)
+  }
+  const handleSelectOnChange=(e)=>{
+    setQuantity(Number(e.target.value));
+
+  }
+  
   return (
-    <div className='add-form'>
-        <h3>
-            What do you need for your trip?
-        </h3>
-    </div>
-  )
+    <form className="add-form" onSubmit={handleSubmit}>
+      <h3>What do you need for your trip?</h3>
+      <select value={quantity} onChange={handleSelectOnChange}>
+        {Array.from({ length: 20 }, (_, index) => index + 1).map((opt) => (
+          <option key={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+      <input placeholder="item..." value={description} onChange={(e)=>setDescription(e.target.value)}></input>
+      <button>Add</button>
+    </form>
+  );
 }
 
-export default Form
+export default Form;
