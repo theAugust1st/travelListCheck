@@ -28,7 +28,7 @@ function App() {
         onDelete={handleDelete}
         onChecked={handleChecked}
       />
-      <Stats />
+      <Stats items={items}/>
     </div>
   );
 }
