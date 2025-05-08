@@ -1,18 +1,16 @@
 
 import React, { useState } from "react";
 
-function Form() {
+function Form({onAddItems}) {
   const [description,setDescription] = useState('')
   const [quantity,setQuantity] = useState(1)
   function handleSubmit(e) {
     e.preventDefault();
-
   if(!description)return;
-    const newProduct = {
+    const newItem = {
       description,quantity,packed:false,id: Date.now()
     }
-    console.log(newProduct)
-
+    onAddItems(newItem)
     setDescription('');
     setQuantity(1)
   }
