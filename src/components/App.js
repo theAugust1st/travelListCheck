@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "./Logo.js";
 import Form from "./Form.js";
-import PackingList from "./PakingList.js"; // Corrected import
+import PackingList from "./PakingList.js"; 
 import Stats from "./Stats.js";
 function App() {
   const [items, setItems] = useState([]);
