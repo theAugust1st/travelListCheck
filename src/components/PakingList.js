@@ -5,11 +5,6 @@ function PakingList({ items, onDelete, onChecked,onReset }) {
   function handleSelect(e) {
     setSortBy(e.target.value);
   }
-
-  const initialItems = [
-    { id: 1, description: "Passports", quantity: 2, packed: false },
-    { id: 2, description: "Socks", quantity: 12, packed: false },
-  ];
   let sortedList;
   if (sortBy === "input") sortedList = items;
   if (sortBy === "description") {
