@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "./Logo.js";
 import Form from "./Form.js";
-import PackingList from "./PakingList.js"; 
+import PackingList from "./PakingList.js";
 import Stats from "./Stats.js";
 function App() {
   const [items, setItems] = useState([]);
@@ -9,7 +9,6 @@ function App() {
     setItems((items) => [...items, item]);
   }
   function handleDelete(id) {
-    console.log(id);
     setItems(items.filter((item) => item.id !== id));
   }
   function handleChecked(id) {
@@ -19,6 +18,10 @@ function App() {
       )
     );
   }
+  function handleClearButton() {
+    const confirmed = window.confirm("Are you sure you want to delete all items?");
+    if (confirmed)setItems([]);
+  }
   return (
     <div className="app">
       <Logo />
@@ -27,8 +30,9 @@ function App() {
         items={items}
         onDelete={handleDelete}
         onChecked={handleChecked}
+        onReset={handleClearButton}
       />
-      <Stats items={items}/>
+      <Stats items={items} />
     </div>
   );
 }
